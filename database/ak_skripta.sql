@@ -20,7 +20,7 @@ USE `mydb` ;
 DROP TABLE IF EXISTS `mydb`.`Povlastice` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Povlastice` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `naziv` VARCHAR(45) NULL,
   `procenat` DECIMAL NULL,
   PRIMARY KEY (`id`))
@@ -33,13 +33,14 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`Putnik` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Putnik` (
-  `id` INT NOT NULL,
-  `ime` VARCHAR(45) NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `ime` VARCHAR(45) NOT NULL,
   `prezime` VARCHAR(45) NOT NULL,
   `broj_pasosa` VARCHAR(45) NOT NULL,
   `pol` TINYINT NULL,
-  `datum_rodjenja` DATETIME NULL,
-  PRIMARY KEY (`id`))
+  `datum_rodjenja` DATE NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC))
 ENGINE = InnoDB;
 
 
@@ -49,7 +50,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`Kompanija` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Kompanija` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `naziv` VARCHAR(45) NOT NULL,
   `oznaka` VARCHAR(45) NOT NULL,
   `sjediste` VARCHAR(45) NOT NULL,
@@ -63,7 +64,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`Sluzbenik` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Sluzbenik` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `Kompanija_id` INT NOT NULL,
   `ime` VARCHAR(45) NOT NULL,
   `prezime` VARCHAR(45) NOT NULL,
@@ -84,7 +85,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`Aerodrom` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Aerodrom` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `naziv` VARCHAR(45) NOT NULL,
   `grad` VARCHAR(45) NOT NULL,
   `drzava` VARCHAR(45) NULL,
@@ -98,7 +99,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`Destinacija` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Destinacija` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `Aerodrom_id` INT NOT NULL,
   `grad` VARCHAR(45) NOT NULL,
   `drzava` VARCHAR(45) NULL,
@@ -118,7 +119,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`Terminal` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Terminal` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `Aerodrom_id` INT NOT NULL,
   `naziv` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
@@ -137,11 +138,11 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`Let` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Let` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `Destinacija_id` INT NOT NULL,
   `Terminal_id` INT NOT NULL,
   `Kompanija_id` INT NOT NULL,
-  `datum_polaska` DATETIME NULL,
+  `datum_polaska` DATE NULL,
   `broj_mjesta` INT NULL,
   `broj_leta` INT NULL,
   PRIMARY KEY (`id`),
@@ -157,12 +158,12 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`Karta` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Karta` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `Putnik_id` INT NOT NULL,
   `Let_id` INT NOT NULL,
   `Sluzbenik_id` INT NOT NULL,
   `broj_sjedista` VARCHAR(45) NOT NULL,
-  `datum_prodaje` DATETIME NULL,
+  `datum_prodaje` DATE NULL,
   `cijena` DECIMAL NULL,
   `popust` DECIMAL NULL,
   `storn` INT NULL,
@@ -194,11 +195,11 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`Rezervacija` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Rezervacija` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `Let_id` INT NOT NULL,
   `Karta_id` INT NOT NULL,
-  `datum_rezervacije` DATETIME NOT NULL,
-  `vazenje_rezervacije` DATETIME NOT NULL,
+  `datum_rezervacije` DATE NOT NULL,
+  `vazenje_rezervacije` DATE NOT NULL,
   `storn` INT NOT NULL DEFAULT 0,
   `realizovana` INT NULL,
   PRIMARY KEY (`id`),

@@ -27,6 +27,14 @@ namespace AvioKompanija.Models
         public virtual DbSet<Sluzbenik> Sluzbenik { get; set; }
         public virtual DbSet<Terminal> Terminal { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseMySQL("server=localhost;port=3306;user=root;password=;database=mydb");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -38,8 +46,7 @@ namespace AvioKompanija.Models
 
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
-                    .HasColumnType("int(11)")
-                    .ValueGeneratedNever();
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.Drzava)
                     .HasColumnName("drzava")
@@ -68,8 +75,7 @@ namespace AvioKompanija.Models
 
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
-                    .HasColumnType("int(11)")
-                    .ValueGeneratedNever();
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.AerodromId)
                     .HasColumnName("Aerodrom_id")
@@ -108,8 +114,7 @@ namespace AvioKompanija.Models
 
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
-                    .HasColumnType("int(11)")
-                    .ValueGeneratedNever();
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.BrojSjedista)
                     .IsRequired()
@@ -121,7 +126,9 @@ namespace AvioKompanija.Models
                     .HasColumnName("cijena")
                     .HasColumnType("decimal(10,0)");
 
-                entity.Property(e => e.DatumProdaje).HasColumnName("datum_prodaje");
+                entity.Property(e => e.DatumProdaje)
+                    .HasColumnName("datum_prodaje")
+                    .HasColumnType("date");
 
                 entity.Property(e => e.LetId)
                     .HasColumnName("Let_id")
@@ -168,8 +175,7 @@ namespace AvioKompanija.Models
 
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
-                    .HasColumnType("int(11)")
-                    .ValueGeneratedNever();
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.Naziv)
                     .IsRequired()
@@ -205,8 +211,7 @@ namespace AvioKompanija.Models
 
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
-                    .HasColumnType("int(11)")
-                    .ValueGeneratedNever();
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.BrojLeta)
                     .HasColumnName("broj_leta")
@@ -216,7 +221,9 @@ namespace AvioKompanija.Models
                     .HasColumnName("broj_mjesta")
                     .HasColumnType("int(11)");
 
-                entity.Property(e => e.DatumPolaska).HasColumnName("datum_polaska");
+                entity.Property(e => e.DatumPolaska)
+                    .HasColumnName("datum_polaska")
+                    .HasColumnType("date");
 
                 entity.Property(e => e.DestinacijaId)
                     .HasColumnName("Destinacija_id")
@@ -237,8 +244,7 @@ namespace AvioKompanija.Models
 
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
-                    .HasColumnType("int(11)")
-                    .ValueGeneratedNever();
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.Naziv)
                     .HasColumnName("naziv")
@@ -254,10 +260,13 @@ namespace AvioKompanija.Models
             {
                 entity.ToTable("putnik", "mydb");
 
+                entity.HasIndex(e => e.Id)
+                    .HasName("id_UNIQUE")
+                    .IsUnique();
+
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
-                    .HasColumnType("int(11)")
-                    .ValueGeneratedNever();
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.BrojPasosa)
                     .IsRequired()
@@ -265,9 +274,12 @@ namespace AvioKompanija.Models
                     .HasMaxLength(45)
                     .IsUnicode(false);
 
-                entity.Property(e => e.DatumRodjenja).HasColumnName("datum_rodjenja");
+                entity.Property(e => e.DatumRodjenja)
+                    .HasColumnName("datum_rodjenja")
+                    .HasColumnType("date");
 
                 entity.Property(e => e.Ime)
+                    .IsRequired()
                     .HasColumnName("ime")
                     .HasMaxLength(45)
                     .IsUnicode(false);
@@ -328,10 +340,11 @@ namespace AvioKompanija.Models
 
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
-                    .HasColumnType("int(11)")
-                    .ValueGeneratedNever();
+                    .HasColumnType("int(11)");
 
-                entity.Property(e => e.DatumRezervacije).HasColumnName("datum_rezervacije");
+                entity.Property(e => e.DatumRezervacije)
+                    .HasColumnName("datum_rezervacije")
+                    .HasColumnType("date");
 
                 entity.Property(e => e.KartaId)
                     .HasColumnName("Karta_id")
@@ -350,7 +363,9 @@ namespace AvioKompanija.Models
                     .HasColumnType("int(11)")
                     .HasDefaultValueSql("0");
 
-                entity.Property(e => e.VazenjeRezervacije).HasColumnName("vazenje_rezervacije");
+                entity.Property(e => e.VazenjeRezervacije)
+                    .HasColumnName("vazenje_rezervacije")
+                    .HasColumnType("date");
 
                 entity.HasOne(d => d.Karta)
                     .WithMany(p => p.Rezervacija)
@@ -374,8 +389,7 @@ namespace AvioKompanija.Models
 
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
-                    .HasColumnType("int(11)")
-                    .ValueGeneratedNever();
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.Ime)
                     .IsRequired()
@@ -414,8 +428,7 @@ namespace AvioKompanija.Models
 
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
-                    .HasColumnType("int(11)")
-                    .ValueGeneratedNever();
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.AerodromId)
                     .HasColumnName("Aerodrom_id")

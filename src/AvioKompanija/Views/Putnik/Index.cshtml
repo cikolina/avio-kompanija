@@ -42,9 +42,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.BrojPasosa)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Pol)
-            </td>
+            @if(item.Pol == 0)
+            {
+                <td>M</td>
+            }
+            else
+            {
+                <td>F</td>
+            }
             <td>
                 @Html.DisplayFor(modelItem => item.DatumRodjenja)
             </td>
