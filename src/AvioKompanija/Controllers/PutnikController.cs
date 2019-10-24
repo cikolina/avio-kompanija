@@ -32,8 +32,9 @@ namespace AvioKompanija.Controllers
                 return NotFound();
             }
 
+            //LINQ upiti
             var putnik = await _context.Putnik
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(p => p.Id == id);
             if (putnik == null)
             {
                 return NotFound();
