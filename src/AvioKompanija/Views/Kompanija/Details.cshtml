@@ -1,0 +1,36 @@
+﻿@model AvioKompanija.Models.Kompanija
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Kompanija</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Naziv)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Naziv)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Oznaka)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Oznaka)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Sjediste)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Sjediste)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

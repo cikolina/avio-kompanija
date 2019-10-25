@@ -1,0 +1,54 @@
+﻿@model AvioKompanija.Models.Rezervacija
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Rezervacija</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DatumRezervacije)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DatumRezervacije)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VazenjeRezervacije)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VazenjeRezervacije)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Storn)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Storn)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Realizovana)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Realizovana)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Karta)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Karta.BrojSjedista)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Let)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Let.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

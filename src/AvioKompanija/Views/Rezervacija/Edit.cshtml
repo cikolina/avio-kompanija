@@ -1,0 +1,59 @@
+﻿@model AvioKompanija.Models.Rezervacija
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Rezervacija</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="LetId" class="control-label"></label>
+                <select asp-for="LetId" class="form-control" asp-items="ViewBag.LetId"></select>
+                <span asp-validation-for="LetId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KartaId" class="control-label"></label>
+                <select asp-for="KartaId" class="form-control" asp-items="ViewBag.KartaId"></select>
+                <span asp-validation-for="KartaId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DatumRezervacije" class="control-label"></label>
+                <input asp-for="DatumRezervacije" class="form-control" />
+                <span asp-validation-for="DatumRezervacije" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VazenjeRezervacije" class="control-label"></label>
+                <input asp-for="VazenjeRezervacije" class="form-control" />
+                <span asp-validation-for="VazenjeRezervacije" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Storn" class="control-label"></label>
+                <input asp-for="Storn" class="form-control" />
+                <span asp-validation-for="Storn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Realizovana" class="control-label"></label>
+                <input asp-for="Realizovana" class="form-control" />
+                <span asp-validation-for="Realizovana" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
