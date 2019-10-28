@@ -21,7 +21,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Avio Kompanija</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Početna</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -30,11 +30,18 @@
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Početna</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Destinacija" asp-action="Index">Destinacije</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Putnik" asp-action="Index">Putnik</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Karta" asp-action="Index">Karte</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Kompanija" asp-action="Index">Avio-kompanije</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Kompanija" asp-action="Index">O nama</a>
+                        </li>
+
                     </ul>
                 </div>
             </div>
