@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace AvioKompanija.Models
 {
@@ -17,8 +16,6 @@ namespace AvioKompanija.Models
         public string Prezime { get; set; }
         public string BrojPasosa { get; set; }
         public byte? Pol { get; set; }
-        
-        [DataType(DataType.Date)]
         public DateTime? DatumRodjenja { get; set; }
 
         public virtual ICollection<Karta> Karta { get; set; }

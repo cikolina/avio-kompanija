@@ -103,6 +103,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Destinacija` (
   `Aerodrom_id` INT NOT NULL,
   `grad` VARCHAR(45) NOT NULL,
   `drzava` VARCHAR(45) NULL,
+  `img` VARCHAR(3000) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_Destinacija_Aerodrom1_idx` (`Aerodrom_id` ASC),
   CONSTRAINT `fk_Destinacija_Aerodrom1`

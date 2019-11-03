@@ -9,6 +9,7 @@ namespace AvioKompanija.Models
         public int AerodromId { get; set; }
         public string Grad { get; set; }
         public string Drzava { get; set; }
+        public string Img { get; set; }
 
         public virtual Aerodrom Aerodrom { get; set; }
     }
