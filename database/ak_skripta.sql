@@ -171,7 +171,27 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Let` (
   INDEX `fk_Let_Destinacija1_idx` (`Destinacija_id` ASC),
   INDEX `fk_Let_Terminal1_idx` (`Terminal_id` ASC),
   INDEX `fk_Let_Avio-kompanija1_idx` (`Kompanija_id` ASC),
-  INDEX `fk_Let_Pocetna_lokacija1_idx` (`Pocetna_lokacija_id` ASC))
+  INDEX `fk_Let_Pocetna_lokacija1_idx` (`Pocetna_lokacija_id` ASC),
+  CONSTRAINT `fk_Let_Destinacija1`
+    FOREIGN KEY (`Destinacija_id`)
+    REFERENCES `mydb`.`Destinacija` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Let_Terminal1`
+    FOREIGN KEY (`Terminal_id`)
+    REFERENCES `mydb`.`Terminal` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Let_Avio-kompanija1`
+    FOREIGN KEY (`Kompanija_id`)
+    REFERENCES `mydb`.`Kompanija` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Let_Pocetna_lokacija1`
+    FOREIGN KEY (`Pocetna_lokacija_id`)
+    REFERENCES `mydb`.`Pocetna_lokacija` (`Destinacija_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
