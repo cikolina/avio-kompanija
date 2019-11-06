@@ -219,11 +219,14 @@ namespace AvioKompanija.Models
             {
                 entity.ToTable("let", "mydb");
 
-                entity.HasIndex(e => e.DestinacijaId)
-                    .HasName("fk_Let_Destinacija1_idx");
-
                 entity.HasIndex(e => e.KompanijaId)
                     .HasName("fk_Let_Avio-kompanija1_idx");
+
+                entity.HasIndex(e => e.KrajnjaDestinacijaId)
+                    .HasName("fk_Let_Destinacija2_idx");
+
+                entity.HasIndex(e => e.PocetnaDestinacijaId)
+                    .HasName("fk_Let_Destinacija1_idx");
 
                 entity.HasIndex(e => e.TerminalId)
                     .HasName("fk_Let_Terminal1_idx");
@@ -244,17 +247,45 @@ namespace AvioKompanija.Models
                     .HasColumnName("datum_polaska")
                     .HasColumnType("date");
 
-                entity.Property(e => e.DestinacijaId)
-                    .HasColumnName("Destinacija_id")
-                    .HasColumnType("int(11)");
-
                 entity.Property(e => e.KompanijaId)
                     .HasColumnName("Kompanija_id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.KrajnjaDestinacijaId)
+                    .HasColumnName("Krajnja_destinacija_id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.PocetnaDestinacijaId)
+                    .HasColumnName("Pocetna_destinacija_id")
                     .HasColumnType("int(11)");
 
                 entity.Property(e => e.TerminalId)
                     .HasColumnName("Terminal_id")
                     .HasColumnType("int(11)");
+
+                entity.HasOne(d => d.Kompanija)
+                    .WithMany(p => p.Let)
+                    .HasForeignKey(d => d.KompanijaId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_Let_Avio-kompanija1");
+
+                entity.HasOne(d => d.KrajnjaDestinacija)
+                    .WithMany(p => p.LetKrajnjaDestinacija)
+                    .HasForeignKey(d => d.KrajnjaDestinacijaId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_Let_Destinacija2");
+
+                entity.HasOne(d => d.PocetnaDestinacija)
+                    .WithMany(p => p.LetPocetnaDestinacija)
+                    .HasForeignKey(d => d.PocetnaDestinacijaId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_Let_Destinacija1");
+
+                entity.HasOne(d => d.Terminal)
+                    .WithMany(p => p.Let)
+                    .HasForeignKey(d => d.TerminalId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("fk_Let_Terminal1");
             });
 
             modelBuilder.Entity<Povlastice>(entity =>

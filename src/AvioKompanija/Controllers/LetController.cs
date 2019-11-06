@@ -21,7 +21,8 @@ namespace AvioKompanija.Controllers
         // GET: Let
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Let.ToListAsync());
+            var avioKompanijaContext = _context.Let.Include(x => x.Kompanija).Include(x => x.KrajnjaDestinacija).Include(x => x.PocetnaDestinacija).Include(x => x.Terminal);
+            return View(await avioKompanijaContext.ToListAsync());
         }
 
         // GET: Let/Details/5
@@ -32,19 +33,27 @@ namespace AvioKompanija.Controllers
                 return NotFound();
             }
 
-            var @let = await _context.Let
+            var let = await _context.Let
+                .Include(x => x.Kompanija)
+                .Include(x => x.KrajnjaDestinacija)
+                .Include(x => x.PocetnaDestinacija)
+                .Include(x => x.Terminal)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (@let == null)
+            if (let == null)
             {
                 return NotFound();
             }
 
-            return View(@let);
+            return View(let);
         }
 
         // GET: Let/Create
         public IActionResult Create()
         {
+            ViewData["KompanijaId"] = new SelectList(_context.Kompanija, "Id", "Naziv");
+            ViewData["KrajnjaDestinacijaId"] = new SelectList(_context.Destinacija, "Id", "Grad");
+            ViewData["PocetnaDestinacijaId"] = new SelectList(_context.Destinacija, "Id", "Grad");
+            ViewData["TerminalId"] = new SelectList(_context.Terminal, "Id", "Naziv");
             return View();
         }
 
@@ -53,15 +62,19 @@ namespace AvioKompanija.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DestinacijaId,TerminalId,KompanijaId,DatumPolaska,BrojMjesta,BrojLeta")] Let @let)
+        public async Task<IActionResult> Create([Bind("Id,PocetnaDestinacijaId,KrajnjaDestinacijaId,TerminalId,KompanijaId,DatumPolaska,BrojMjesta,BrojLeta")] Let let)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(@let);
+                _context.Add(let);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(@let);
+            ViewData["KompanijaId"] = new SelectList(_context.Kompanija, "Id", "Naziv", let.KompanijaId);
+            ViewData["KrajnjaDestinacijaId"] = new SelectList(_context.Destinacija, "Id", "Grad", let.KrajnjaDestinacijaId);
+            ViewData["PocetnaDestinacijaId"] = new SelectList(_context.Destinacija, "Id", "Grad", let.PocetnaDestinacijaId);
+            ViewData["TerminalId"] = new SelectList(_context.Terminal, "Id", "Naziv", let.TerminalId);
+            return View(let);
         }
 
         // GET: Let/Edit/5
@@ -72,12 +85,16 @@ namespace AvioKompanija.Controllers
                 return NotFound();
             }
 
-            var @let = await _context.Let.FindAsync(id);
-            if (@let == null)
+            var let = await _context.Let.FindAsync(id);
+            if (let == null)
             {
                 return NotFound();
             }
-            return View(@let);
+            ViewData["KompanijaId"] = new SelectList(_context.Kompanija, "Id", "Naziv", let.KompanijaId);
+            ViewData["KrajnjaDestinacijaId"] = new SelectList(_context.Destinacija, "Id", "Grad", let.KrajnjaDestinacijaId);
+            ViewData["PocetnaDestinacijaId"] = new SelectList(_context.Destinacija, "Id", "Grad", let.PocetnaDestinacijaId);
+            ViewData["TerminalId"] = new SelectList(_context.Terminal, "Id", "Naziv", let.TerminalId);
+            return View(let);
         }
 
         // POST: Let/Edit/5
@@ -85,9 +102,9 @@ namespace AvioKompanija.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DestinacijaId,TerminalId,KompanijaId,DatumPolaska,BrojMjesta,BrojLeta")] Let @let)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,PocetnaDestinacijaId,KrajnjaDestinacijaId,TerminalId,KompanijaId,DatumPolaska,BrojMjesta,BrojLeta")] Let let)
         {
-            if (id != @let.Id)
+            if (id != let.Id)
             {
                 return NotFound();
             }
@@ -96,12 +113,12 @@ namespace AvioKompanija.Controllers
             {
                 try
                 {
-                    _context.Update(@let);
+                    _context.Update(let);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!LetExists(@let.Id))
+                    if (!LetExists(let.Id))
                     {
                         return NotFound();
                     }
@@ -112,7 +129,11 @@ namespace AvioKompanija.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(@let);
+            ViewData["KompanijaId"] = new SelectList(_context.Kompanija, "Id", "Naziv", let.KompanijaId);
+            ViewData["KrajnjaDestinacijaId"] = new SelectList(_context.Destinacija, "Id", "Grad", let.KrajnjaDestinacijaId);
+            ViewData["PocetnaDestinacijaId"] = new SelectList(_context.Destinacija, "Id", "Grad", let.PocetnaDestinacijaId);
+            ViewData["TerminalId"] = new SelectList(_context.Terminal, "Id", "Naziv", let.TerminalId);
+            return View(let);
         }
 
         // GET: Let/Delete/5
@@ -123,14 +144,18 @@ namespace AvioKompanija.Controllers
                 return NotFound();
             }
 
-            var @let = await _context.Let
+            var let = await _context.Let
+                .Include(x => x.Kompanija)
+                .Include(x => x.KrajnjaDestinacija)
+                .Include(x => x.PocetnaDestinacija)
+                .Include(x => x.Terminal)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (@let == null)
+            if (let == null)
             {
                 return NotFound();
             }
 
-            return View(@let);
+            return View(let);
         }
 
         // POST: Let/Delete/5
@@ -138,8 +163,8 @@ namespace AvioKompanija.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var @let = await _context.Let.FindAsync(id);
-            _context.Let.Remove(@let);
+            var let = await _context.Let.FindAsync(id);
+            _context.Let.Remove(let);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

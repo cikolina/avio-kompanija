@@ -12,24 +12,6 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DestinacijaId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DestinacijaId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TerminalId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TerminalId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.KompanijaId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.KompanijaId)
-        </dd>
-        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.DatumPolaska)
         </dt>
         <dd class = "col-sm-10">
@@ -47,6 +29,30 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.BrojLeta)
         </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Kompanija)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Kompanija.Naziv)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.KrajnjaDestinacija)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.KrajnjaDestinacija.Grad)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PocetnaDestinacija)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PocetnaDestinacija.Grad)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Terminal)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Terminal.Id)
+        </dd class>
     </dl>
     
     <form asp-action="Delete">

@@ -7,6 +7,7 @@ namespace AvioKompanija.Models
     {
         public Kompanija()
         {
+            Let = new HashSet<Let>();
             Sluzbenik = new HashSet<Sluzbenik>();
         }
 
@@ -17,6 +18,7 @@ namespace AvioKompanija.Models
         public string Logo { get; set; }
         public int? Ocjena { get; set; }
 
+        public virtual ICollection<Let> Let { get; set; }
         public virtual ICollection<Sluzbenik> Sluzbenik { get; set; }
     }
 }

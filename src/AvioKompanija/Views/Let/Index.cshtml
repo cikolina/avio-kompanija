@@ -13,15 +13,6 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.DestinacijaId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TerminalId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.KompanijaId)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.DatumPolaska)
             </th>
             <th>
@@ -30,21 +21,24 @@
             <th>
                 @Html.DisplayNameFor(model => model.BrojLeta)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kompanija)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KrajnjaDestinacija)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PocetnaDestinacija)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Terminal)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DestinacijaId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TerminalId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.KompanijaId)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DatumPolaska)
             </td>
@@ -53,6 +47,18 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BrojLeta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kompanija.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KrajnjaDestinacija.Grad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PocetnaDestinacija.Grad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Terminal.Naziv)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
