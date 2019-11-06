@@ -138,12 +138,29 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `mydb`.`Pocetna_lokacija`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `mydb`.`Pocetna_lokacija` ;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`Pocetna_lokacija` (
+  `Destinacija_id` INT NOT NULL,
+  PRIMARY KEY (`Destinacija_id`),
+  CONSTRAINT `fk_Pocetna_lokacija_Destinacija1`
+    FOREIGN KEY (`Destinacija_id`)
+    REFERENCES `mydb`.`Destinacija` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `mydb`.`Let`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `mydb`.`Let` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Let` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  `Pocetna_lokacija_id` INT NOT NULL,
   `Destinacija_id` INT NOT NULL,
   `Terminal_id` INT NOT NULL,
   `Kompanija_id` INT NOT NULL,
@@ -153,7 +170,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Let` (
   PRIMARY KEY (`id`),
   INDEX `fk_Let_Destinacija1_idx` (`Destinacija_id` ASC),
   INDEX `fk_Let_Terminal1_idx` (`Terminal_id` ASC),
-  INDEX `fk_Let_Avio-kompanija1_idx` (`Kompanija_id` ASC))
+  INDEX `fk_Let_Avio-kompanija1_idx` (`Kompanija_id` ASC),
+  INDEX `fk_Let_Pocetna_lokacija1_idx` (`Pocetna_lokacija_id` ASC))
 ENGINE = InnoDB;
 
 

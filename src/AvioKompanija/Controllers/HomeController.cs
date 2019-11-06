@@ -5,11 +5,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AvioKompanija.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AvioKompanija.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly AvioKompanijaContext _context;
+
+        public HomeController(AvioKompanijaContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index()
         {
             return View();
