@@ -14,15 +14,26 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="PutnikId" class="control-label"></label>
-                <select asp-for="PutnikId" class ="form-control" asp-items="ViewBag.PutnikId"></select>
+                <select asp-for="PutnikId" class="form-control" asp-items="ViewBag.PutnikId"></select>
             </div>
-            <div class="form-group">
-                <label asp-for="LetId" class="control-label"></label>
-                <select asp-for="LetId" class ="form-control" asp-items="ViewBag.LetId"></select>
-            </div>
+            @if ((int)TempData["PovratniLetPrviSmjer"] > 0)
+            {
+                <div class="form-group">
+                    <label asp-for="LetId" class="control-label"></label>
+                    <input asp-for="LetId" class="form-control" value="@TempData["PovratniLetPrviSmjer"]" readonly />
+                </div>
+            }
+            else
+            {
+                <div class="form-group">
+                    <label asp-for="LetId" class="control-label"></label>
+                    <select asp-for="LetId" class="form-control" asp-items="ViewBag.LetId"></select>
+                </div>
+            }
+
             <div class="form-group">
                 <label asp-for="SluzbenikId" class="control-label"></label>
-                <select asp-for="SluzbenikId" class ="form-control" asp-items="ViewBag.SluzbenikId"></select>
+                <select asp-for="SluzbenikId" class="form-control" asp-items="ViewBag.SluzbenikId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="BrojSjedista" class="control-label"></label>
