@@ -53,7 +53,7 @@ namespace AvioKompanija.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Naziv,Procenat")] Povlastice povlastice)
+        public async Task<IActionResult> Create([Bind("Id,Naziv,Procenat,Detalji")] Povlastice povlastice)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace AvioKompanija.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Naziv,Procenat")] Povlastice povlastice)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Naziv,Procenat,Detalji")] Povlastice povlastice)
         {
             if (id != povlastice.Id)
             {

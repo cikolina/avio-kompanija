@@ -27,7 +27,14 @@ namespace AvioKompanija.Models
         public virtual DbSet<Sluzbenik> Sluzbenik { get; set; }
         public virtual DbSet<Terminal> Terminal { get; set; }
 
-      
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseMySQL("server=localhost;port=3306;user=root;password=;database=mydb");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -88,6 +95,11 @@ namespace AvioKompanija.Models
                 entity.Property(e => e.Img)
                     .HasColumnName("img")
                     .HasMaxLength(3000)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Opis)
+                    .HasColumnName("opis")
+                    .HasMaxLength(300)
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.Aerodrom)
@@ -175,11 +187,20 @@ namespace AvioKompanija.Models
                     .HasColumnName("id")
                     .HasColumnType("int(11)");
 
+                entity.Property(e => e.Logo)
+                    .HasColumnName("logo")
+                    .HasMaxLength(1000)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Naziv)
                     .IsRequired()
                     .HasColumnName("naziv")
                     .HasMaxLength(45)
                     .IsUnicode(false);
+
+                entity.Property(e => e.Ocjena)
+                    .HasColumnName("ocjena")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.Oznaka)
                     .IsRequired()
@@ -243,6 +264,11 @@ namespace AvioKompanija.Models
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
                     .HasColumnType("int(11)");
+
+                entity.Property(e => e.Detalji)
+                    .HasColumnName("detalji")
+                    .HasMaxLength(450)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Naziv)
                     .HasColumnName("naziv")

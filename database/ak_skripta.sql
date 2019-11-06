@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Povlastice` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `naziv` VARCHAR(45) NULL,
   `procenat` DECIMAL NULL,
+  `detalji` VARCHAR(450) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -54,6 +55,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Kompanija` (
   `naziv` VARCHAR(45) NOT NULL,
   `oznaka` VARCHAR(45) NOT NULL,
   `sjediste` VARCHAR(45) NOT NULL,
+  `logo` VARCHAR(1000) NULL,
+  `ocjena` INT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -104,6 +107,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Destinacija` (
   `grad` VARCHAR(45) NOT NULL,
   `drzava` VARCHAR(45) NULL,
   `img` VARCHAR(3000) NULL,
+  `opis` VARCHAR(300) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_Destinacija_Aerodrom1_idx` (`Aerodrom_id` ASC),
   CONSTRAINT `fk_Destinacija_Aerodrom1`

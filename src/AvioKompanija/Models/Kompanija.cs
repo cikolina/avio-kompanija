@@ -14,6 +14,8 @@ namespace AvioKompanija.Models
         public string Naziv { get; set; }
         public string Oznaka { get; set; }
         public string Sjediste { get; set; }
+        public string Logo { get; set; }
+        public int? Ocjena { get; set; }
 
         public virtual ICollection<Sluzbenik> Sluzbenik { get; set; }
     }

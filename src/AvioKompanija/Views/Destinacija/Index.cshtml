@@ -4,64 +4,56 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Destinacije </h1>
+<h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Dodaj novu destinaciju</a>
+    <a asp-action="Create">Create New</a>
 </p>
-@foreach (var item in Model)
-{
-    <div class="container">
-        <div class="row">
-            <div class=" col-5">
-                <h2 class="text-primary ">@item.Grad</h2>
-                <img class="popImg img-thumbnail img-hover" width="430"
-                     src="@Html.DisplayFor(modelItem => item.Img)"
-                     alt="@Html.DisplayFor(modelItem => item.Grad)" />
-
-            </div>
-
-            <div class="col-7">
-                <p>Grad: @item.Grad</p>
-                <p>Država:@item.Drzava</p>
-                <p>O destinaciji:</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Grad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Drzava)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Img)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aerodrom)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Drzava)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Img)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aerodrom.Grad)
+            </td>
+            <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </div>
-
-        </div>
-    </div>
+            </td>
+        </tr>
 }
-
-    <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <img src="" class="imagepreview" style="width: 100%;">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    @section Scripts {
-        <script>$(function () {
-        $('.popImg').on('click', function () {
-            $('.imagepreview').attr('src', $(this).attr('src'));
-            $('#exampleModalCenterTitle').text($(this).attr('alt'));
-            $('#imagemodal').modal('show');
-        });
-    });</script>
-        <style>
-
-            .img-hover {
-                cursor: pointer;
-            }
-        </style>
-    }
-
+    </tbody>
+</table>
