@@ -4,19 +4,20 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Rezervacije</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Rezerviši novu kartu</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.DatumRezervacije)
+               
+                Datum rezervacije
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.VazenjeRezervacije)
+                Važenje rezervacije
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Storn)
@@ -55,9 +56,9 @@
                 @Html.DisplayFor(modelItem => item.Let.Id)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Izmjeni rezervaciju</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detlji</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Odustani od rezervacije</a>
             </td>
         </tr>
 }

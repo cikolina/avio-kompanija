@@ -4,31 +4,31 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Letovi</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.DatumPolaska)
+                Datum polaska
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BrojMjesta)
+                Broj sjedišta
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BrojLeta)
+                Broj leta
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Kompanija)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.KrajnjaDestinacija)
+                
+                Krajnja destinacija
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PocetnaDestinacija)
+               
+                Početna destinacija
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Terminal)
@@ -61,11 +61,14 @@
                 @Html.DisplayFor(modelItem => item.Terminal.Naziv)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Uredi</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalji</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Obriši</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+<p>
+    <a asp-action="Create">Dodaj novi let</a>
+</p>
