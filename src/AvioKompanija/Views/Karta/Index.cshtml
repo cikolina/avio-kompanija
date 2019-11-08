@@ -4,19 +4,19 @@
     ViewData["Title"] = "Kupljene karte";
 }
 
-<h1>Index</h1>
+<h1>Kupljene karte</h1>
 
-<p>
-    <a asp-action="Create">Kupi novu kartu</a>
-</p>
-<table class="table.hover ">
-    <thead>
+
+<table class="table-hover table-bordered " border="3">
+    <thead style="background-color:darkgray">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.BrojSjedista)
+              <!--  @Html.DisplayNameFor(model => model.BrojSjedista)-->
+                Broj Sjedišta
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DatumProdaje)
+             <!--   @Html.DisplayNameFor(model => model.DatumProdaje)-->
+                Datum Prodaje
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Cijena)
@@ -67,11 +67,15 @@
                 @Html.DisplayFor(modelItem => item.Sluzbenik.Ime)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Izmjeni</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalji</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Obriši</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+<p>
+    <a asp-action="Create">Kupi novu kartu</a>
+</p>

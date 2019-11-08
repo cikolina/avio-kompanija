@@ -69,7 +69,7 @@ namespace AvioKompanija.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["LetId"] = new SelectList(_context.Let, "Id", "Id", karta.LetId);
-            ViewData["PutnikId"] = new SelectList(_context.Putnik, "Id", "BrojPasosa", karta.PutnikId);
+            ViewData["PutnikId"] = new SelectList(_context.Putnik, "Id", "Ime", karta.PutnikId);
             ViewData["SluzbenikId"] = new SelectList(_context.Sluzbenik, "Id", "Ime", karta.SluzbenikId);
             return View(karta);
         }

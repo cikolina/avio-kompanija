@@ -5,35 +5,54 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Destinacije </h1>
+<h1  style="color:mediumblue;">Destinacije </h1>
 
-<p>
-    <a asp-action="Create">Dodaj novu destinaciju</a>
-</p>
+
 @foreach (var item in Model)
 {
     <div class="container">
         <div class="row">
-            <div class=" col-5">
+            <div class="col-5">
                 <h2 class="text-primary ">@item.Grad</h2>
-                <img class="popImg img-thumbnail img-hover" width="430"
+            </div>
+            <div class="col-7"></div>
+        </div>
+        <div class="row">
+            <div class="col-5">
+                <p><h6>O destinaciji: </h6> @item.Opis</p>
+                <p>
+                    Avio karte  za @item.Grad možete
+                    vrlo jednostavnom procedurom kupiti preko našeg sajta u svega
+                    nekoliko koraka. 
+                </p>
+
+            </div>
+            <div class="col-7">
+                <img class="popImg img-thumbnail img-hover" width="430px;"height="300px;"
                      src="@Html.DisplayFor(modelItem => item.Img)"
                      alt="@Html.DisplayFor(modelItem => item.Grad)" />
+                <p>@item.Drzava : @item.Grad</p>
 
             </div>
 
-            <div class="col-7">
+        </div>
+        <div class="row">
+            <div class=" col-5">   
 
-                <p>Grad: @item.Grad</p>
-                <p>Država:@item.Drzava</p>
-                <p >O destinaciji: @item.Opis</p>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </div>
+
+            <div class="col-7" style="text-align:right;"> 
+              
+                <a asp-action="Edit" asp-route-id="@item.Id">Uredi</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Izbrisi</a>
             </div>
 
         </div>
     </div>
 }
+<p>
+    <a asp-action="Create">Dodaj novu destinaciju</a>
+</p>
 
 <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">

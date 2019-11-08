@@ -6,19 +6,105 @@
 
 
 <div class="container">
+  
     <div class="row">
-        <div class="col-sm-12 ">
-            <div class="maintxt" style="position:relative;">
+        <div class="col-sm-12 " style="position:relative;">
                 <img src="https://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/wackiest-airplanes-plane1215.jpg?itok=XpmhZDq8" alt="Cinque Terre" style="width:100%">
                 <span class="overlay-text" style="position:absolute;top:20%;left:25%;">
-                    <h1>Welcome to our website</h1>
+                    <h1 style="color:mediumblue;text-align:center;">Welcome to our website</h1>
                 </span>
-            </div>
+                <div class="container"
+                     style="width:90%;height:100px;background-color:red; position:absolute;bottom:50px;left:5%;">
+                    <div class="row" style="background:black;">
+                        <div class="col-md-12">
+                            <div class="navbar">
+                                <a href="#povratni" onclick='document.getElementById("btn").style.display = "block"'> Povratni </a>
+                                <a href="#jedan" onclick='document.getElementById("btn").style.display = "none"'>U jednom smjeru</a>
+                            </div>
+                        </div>
+                    </div>
+                    <form asp-action="Search">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="row" style="background:gray;">
+                            <div class="form-group col-md-2">
+                                <label asp-for="PocetnaDestinacijaId" class="control-label"></label>
+                                <select asp-for="PocetnaDestinacijaId" class="form-control" asp-items="ViewBag.PocetnaDestinacijaId"></select>
+                                <span asp-validation-for="PocetnaDestinacijaId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label asp-for="KrajnjaDestinacijaId" class="control-label"></label>
+                                <select asp-for="KrajnjaDestinacijaId" class="form-control" asp-items="ViewBag.KrajnjaDestinacijaId"></select>
+                                <span asp-validation-for="KrajnjaDestinacijaId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label asp-for="DatumPolaska" class="control-label"></label>
+                                <input asp-for="DatumPolaska" class="form-control" />
+                                <span asp-validation-for="DatumPolaska" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-2" id="btn">
+                                <label asp-for="DatumPovratka" class="control-label"></label>
+                                <input asp-for="DatumPovratka" class="form-control" />
+                                <span asp-validation-for="DatumPovratka" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label asp-for="BrojPutnika" class="control-label"></label>
+                                <input asp-for="BrojPutnika" class="form-control" />
+                                <span asp-validation-for="BrojPutnika" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <input type="submit" value="Save" class="btn btn-primary" />
+                            </div>
+                            <!--<div class="col-md-6">
+            @if (ViewBag.ErrorPovratniLet != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @ViewBag.ErrorPovratniLet
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            }
+            <form asp-action="Search">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="PocetnaDestinacijaId" class="control-label"></label>
+                    <select asp-for="PocetnaDestinacijaId" class="form-control" asp-items="ViewBag.PocetnaDestinacijaId"></select>
+                    <span asp-validation-for="PocetnaDestinacijaId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="KrajnjaDestinacijaId" class="control-label"></label>
+                    <select asp-for="KrajnjaDestinacijaId" class="form-control" asp-items="ViewBag.KrajnjaDestinacijaId"></select>
+                    <span asp-validation-for="KrajnjaDestinacijaId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DatumPolaska" class="control-label"></label>
+                    <input asp-for="DatumPolaska" class="form-control" />
+                    <span asp-validation-for="DatumPolaska" class="text-danger"></span>
+                </div>
+                <div class="form-group" id="btn">
+                    <label asp-for="DatumPovratka" class="control-label"></label>
+                    <input asp-for="DatumPovratka" class="form-control" />
+                    <span asp-validation-for="DatumPovratka" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="BrojPutnika" class="control-label"></label>
+                    <input asp-for="BrojPutnika" class="form-control" />
+                    <span asp-validation-for="BrojPutnika" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>-->
+                        </div>
+                    </form>
+                </div>
         </div>
     </div>
-    <div class="row">
+   <!--
+    <div class="row"style="background:black;">
         <div class="col-md-12">
-            <div class="navbar" style="background:black;">
+            <div class="navbar" >
                 <a href="#povratni" onclick='document.getElementById("btn").style.display = "block"'> Povratni </a>
                 <a href="#jedan" onclick='document.getElementById("btn").style.display = "none"'>U jednom smjeru</a>
 
@@ -69,7 +155,7 @@
             </form>
         </div>
     </div>
-</div>
+</div>-->
 
 
 <div class=" col-sm-12 text-center" style="background-image:url('https://cdn.pixabay.com/photo/2015/07/11/23/02/plane-841441_960_720.jpg');">

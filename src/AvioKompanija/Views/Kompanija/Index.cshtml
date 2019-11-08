@@ -4,11 +4,11 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Lista avio-kompanija koje nam nude svoje usluge</h1>
+<h2 style="color:mediumblue; text-align:center; margin:30px;">Lista avio-kompanija koje nam nude svoje usluge.</h2>
+<br />
 
-<p>
-    <a asp-action="Create">Dodajte  novu kompaniju</a>
-</p>
+
+
 @foreach (var item in Model)
 {
     <div class="row">
@@ -17,19 +17,28 @@
 
         </div>
         <div class="col-md-1"></div>
-        <div class="col-md-6">
-            <h4>Naziv avio-kompanije:@item.Naziv</h4>
-            <p>Oznaka avio-kompanije:@item.Oznaka</p>
-            <p>Sjedište avio-kompanije:@item.Sjediste</p>
-            <p>Ocjena avio-kompanije:@item.Ocjena</p>
+        <div class="col-md-8">
+            <h4>Naziv avio-kompanije: @item.Naziv</h4>
+            <p>
+                Oznaka avio-kompanije: @item.Oznaka <br />
+                Sjedište avio-kompanije: @item.Sjediste<br />
+                Ocjena avio-kompanije: @item.Ocjena
+            </p>
+          
         </div>
-        <div class="col-md-2">
-            <a asp-action="Edit" asp-route-id="@item.Id">Uredi informacije o kompaniji</a> |
-            <a asp-action="Details" asp-route-id="@item.Id">Detalji o kompaniji</a> |
-            <a asp-action="Delete" asp-route-id="@item.Id">Izbriši kompaniju iz liste</a>
+       
+    </div>
+    <div class="row">
+        <div class="col-6">
 
         </div>
-        <div class="col-12"></div>
+        <div class="col-md-6">
+            <a asp-action="Edit" asp-route-id="@item.Id">Uredi informacije o kompaniji</a> |
+            <a asp-action="Details" asp-route-id="@item.Id">Detalji o kompaniji</a> |
+            <a asp-action="Delete" asp-route-id="@item.Id">Izbriši kompaniju</a>
+
+        </div>
+
     </div>
 }
 <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -47,3 +56,6 @@
         </div>
     </div>
 </div>
+<p>
+    <a asp-action="Create">Dodajte  novu kompaniju</a>
+</p>
