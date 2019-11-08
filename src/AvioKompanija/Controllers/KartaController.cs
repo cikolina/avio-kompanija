@@ -50,7 +50,7 @@ namespace AvioKompanija.Controllers
         public IActionResult Create()
         {
             ViewData["LetId"] = new SelectList(_context.Let, "Id", "Id");
-            ViewData["PutnikId"] = new SelectList(_context.Putnik, "Id", "BrojPasosa");
+            ViewData["PutnikId"] = new SelectList(_context.Putnik, "Id", "Ime");
             ViewData["SluzbenikId"] = new SelectList(_context.Sluzbenik, "Id", "Ime");
             return View();
         }
