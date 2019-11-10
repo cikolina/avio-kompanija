@@ -13,8 +13,17 @@
                 <span class="overlay-text" style="position:absolute;top:20%;left:25%;">
                     <h1 style="color:mediumblue;text-align:center;">Dobro došli na naš web-sajt.</h1>
                 </span>
-                <div class="container"
+                <div class="container "
                      style="width:90%;height:100px;background-color:red; position:absolute;bottom:50px;left:5%;">
+                    @if (ViewBag.ErrorPovratniLet != "")
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            @ViewBag.ErrorPovratniLet
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    }
                     <div class="row" style="background:black;">
                         <div class="col-md-12">
                             <div class="navbar">
@@ -54,48 +63,7 @@
                             <div class="form-group col-md-2">
                                 <input type="submit" value="Pretraži" class="btn btn-primary" />
                             </div>
-                            <!--<div class="col-md-6">
-            @if (ViewBag.ErrorPovratniLet != null)
-            {
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    @ViewBag.ErrorPovratniLet
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            }
-            <form asp-action="Search">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="PocetnaDestinacijaId" class="control-label"></label>
-                    <select asp-for="PocetnaDestinacijaId" class="form-control" asp-items="ViewBag.PocetnaDestinacijaId"></select>
-                    <span asp-validation-for="PocetnaDestinacijaId" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="KrajnjaDestinacijaId" class="control-label"></label>
-                    <select asp-for="KrajnjaDestinacijaId" class="form-control" asp-items="ViewBag.KrajnjaDestinacijaId"></select>
-                    <span asp-validation-for="KrajnjaDestinacijaId" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="DatumPolaska" class="control-label"></label>
-                    <input asp-for="DatumPolaska" class="form-control" />
-                    <span asp-validation-for="DatumPolaska" class="text-danger"></span>
-                </div>
-                <div class="form-group" id="btn">
-                    <label asp-for="DatumPovratka" class="control-label"></label>
-                    <input asp-for="DatumPovratka" class="form-control" />
-                    <span asp-validation-for="DatumPovratka" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="BrojPutnika" class="control-label"></label>
-                    <input asp-for="BrojPutnika" class="form-control" />
-                    <span asp-validation-for="BrojPutnika" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-primary" />
-                </div>
-            </form>
-        </div>-->
+                           
                         </div>
                     </form>
                 </div>
@@ -158,12 +126,11 @@
 </div>-->
 
 
-<div class=" col-sm-12 text-center" style="background-image:url('https://cdn.pixabay.com/photo/2015/07/11/23/02/plane-841441_960_720.jpg');">
-    <div class="container">
+<div class=" col-sm-12 text-center" >
         <div class="row">
             <div class="col-sm-4">
                 <h3>Rezervacije</h3>
-                <a href="../rezervacija">
+                <a href="../rezervacija/create">
                     <img src="http://www.travipro.com/assets/images/flight/carimg1.jpg" style="width:50%; " />
                     <p style="opacity:0.8; background:lightgray; color:black;">Rezervišite svoju kartu preko telefona,table ili laptopa i uštedite vrijeme čekanja na aerodromu.</p>
                 </a>

@@ -23,6 +23,16 @@ namespace AvioKompanija.Controllers
         {
             ViewData["KrajnjaDestinacijaId"] = new SelectList(_context.Destinacija, "Id", "Grad");
             ViewData["PocetnaDestinacijaId"] = new SelectList(_context.Destinacija, "Id", "Grad");
+            var errMsg = TempData["ErrorPovratniLet"] as string;
+
+            if (errMsg != null)
+            {
+                ViewBag.ErrorPovratniLet = errMsg;
+            }
+            else
+            {
+                ViewBag.ErrorPovratniLet = "";
+            }
             return View();
         }
 
@@ -63,7 +73,7 @@ namespace AvioKompanija.Controllers
                     }
                     else
                     {
-                        ViewData["ErrorPovratniLet"] = "Ne postoje trazeni let i povratni let!!";
+                        TempData["ErrorPovratniLet"] = "Ne postoje trazeni let i povratni let!!";
                         return RedirectToAction("Index");
                     }
 
@@ -87,12 +97,12 @@ namespace AvioKompanija.Controllers
                     }
                     else
                     {
-                        ViewData["ErrorPovratniLet"] = "Ne postoji trazeni let!!";
+                        TempData["ErrorPovratniLet"] = "Ne postoji trazeni let!!";
                         return RedirectToAction("Index");
                     }
                 }
             }
-            ViewData["ErrorPovratniLet"] = "Pogresna pretraga!!";
+            TempData["ErrorPovratniLet"] = "Pogresna pretraga!!";
             return RedirectToAction("Index");
         }
 

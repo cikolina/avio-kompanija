@@ -58,9 +58,13 @@ body {
 .table-bordered thead th{
     padding:10px;
     font-size:0.8em;
+    background-color:gray;
 
 }
 .table-bordered tbody td {
     padding: 10px;
     font-size: 0.8em;
+    background-color:white;
+    opacity:0.8;
 }
+

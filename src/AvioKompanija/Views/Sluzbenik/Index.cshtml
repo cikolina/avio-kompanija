@@ -4,12 +4,11 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>O nama</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+
+
+<table class="table-hover table-bordered" border="3">
     <thead>
         <tr>
             <th>
@@ -19,7 +18,7 @@
                 @Html.DisplayNameFor(model => model.Prezime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RadnoMjesto)
+            Radno mjesto
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Kompanija)
@@ -43,11 +42,14 @@
                 @Html.DisplayFor(modelItem => item.Kompanija.Naziv)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Uredi</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalji</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Obriši</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+<p>
+    <a asp-action="Create">Dodaj novog zaposlenog</a>
+</p>
