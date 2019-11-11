@@ -3,12 +3,41 @@
 @{
     ViewData["Title"] = "Kupljene karte";
 }
+
+    <style>
+        h1 {
+            background: #fff;
+            color: #333;
+            font-size: 2em;
+            display: inline-block;
+            padding: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin: 50px 0 0 0;
+        }
+
+        h5 {
+            text-align: center;
+            background: #333;
+            color: #fff;
+            display: inline-block;
+            padding: 10px;
+            font-weight: 300;
+            margin: 0;
+        }
+
+        .table-bordered thead th {
+            background: silver;
+            border: 0;
+        }
+    </style>
+
     <body style="background-image:url('https://solomonstar.live/wp-content/uploads/2019/09/Airplane_Flight_Tickets_High-040919-WI-PT.jpeg')">
-        <h1 style="color:darkred;">Kupljene karte</h1>
-
-
-        <table class="table-hover table-bordered " border="3">
-            <thead style="background-color:darkgray">
+        <h1>Kupljene karte</h1><br />
+        <h5>Kupljene karte</h5>
+        <br /><br />
+        <table class="table-hover table-bordered">
+            <thead style="background-color: silver;">
                 <tr>
                     <th>
                         <!--  @Html.DisplayNameFor(model => model.BrojSjedista)-->
