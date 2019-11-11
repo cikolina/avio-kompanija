@@ -50,6 +50,7 @@ namespace AvioKompanija.Controllers
             ViewData["KompanijaId"] = new SelectList(_context.Kompanija, "Id", "Naziv");
             return View();
         }
+        
 
         // POST: Sluzbenik/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
