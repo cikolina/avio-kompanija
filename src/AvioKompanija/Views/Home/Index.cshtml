@@ -6,37 +6,47 @@
 
 <style>
     h1 {
-        background: #fff;
+
         color: #333;
         font-size: 3em;
         display: inline-block;
         padding: 20px;
-        font-weight: 700;
+        font-weight: 600;
         text-transform: uppercase;
         margin: 50px 0 0 0;
     }
 
-    h5 {
+    h6 {
         text-align: center;
         background: #333;
         color: #fff;
         display: inline-block;
         padding: 10px;
-        font-weight: 300;
+        font-weight: 100;
         margin: 0;
     }
+    col-sm-4{
+    padding:20px;
+    height:400px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+       }
+   
 </style>
 <div class="container">
-    <div class="row" style=" background: red url('https://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/wackiest-airplanes-plane1215.jpg?itok=XpmhZDq8') no-repeat top left;">
+    <div class="row" style=" background:  url('https://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/wackiest-airplanes-plane1215.jpg?itok=XpmhZDq8') ;background-repeat: no-repeat;background-attachment: fixed; background-size: 100% 100%;">
         <div class="col-sm-12 container">
             <div class="row">
                 <div class="col-sm-12">
-                    <h1>Dobro došli na naš web-sajt.</h1>
+                    <h1>Air-Bosnia</h1>
                 </div>
                 <div class="col-sm-12">
-                    <h5>
-                        Dobro došli na naš web-sajt.
-                    </h5>
+                    <h6>
+                        Letite sa nama sigurno i srećno.<br/>
+                        Izaberite mjesto iz snova i mi ćemo vas tamo odvesti.<br/>
+                        Za vas pronalazimo najpovoljnije ponude za vaše želje.
+                    </h6>
                 </div>
             </div>
             <div class="row">
@@ -102,98 +112,41 @@
 </div>
 
 <div class="row">
-    <!--<div class="col-sm-12" style="background: red url('https://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/wackiest-airplanes-plane1215.jpg?itok=XpmhZDq8') no-repeat top left; height: 500px;">
-        <img src="https://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/wackiest-airplanes-plane1215.jpg?itok=XpmhZDq8" alt="Cinque Terre" style="width:100%">
-        <span class="overlay-text" style="position:absolute;top:20%;left:25%;">
-            <h1 style="color:mediumblue;text-align:center;">Dobro došli na naš web-sajt.</h1>
-        </span>
-        <div class="container" style="position:relative;"
-             style="width:90%;height:100px;background-color:red; margin-bottom:20px;">
-            @if (ViewBag.ErrorPovratniLet != "")
-            {
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    @ViewBag.ErrorPovratniLet
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            }
-            <div class="row" style="background:black;">
-                <div class="col-md-12">
-                    <div class="navbar">
-                        <a href="#povratni" onclick='document.getElementById("btn").style.display = "block"'> Povratni </a>
-                        <a href="#jedan" onclick='document.getElementById("btn").style.display = "none"'>U jednom smjeru</a>
-                    </div>
-                </div>
-            </div>
-            <form asp-action="Search">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="row" style="background:gray;">
-                    <div class="form-group col-md-2">
-                        <label asp-for="PocetnaDestinacijaId" class="control-label">Pocetna destinacija</label>
-                        <select asp-for="PocetnaDestinacijaId" class="form-control" asp-items="ViewBag.PocetnaDestinacijaId"></select>
-                        <span asp-validation-for="PocetnaDestinacijaId" class="text-danger"></span>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label asp-for="KrajnjaDestinacijaId" class="control-label">Krajnja destinacija</label>
-                        <select asp-for="KrajnjaDestinacijaId" class="form-control" asp-items="ViewBag.KrajnjaDestinacijaId"></select>
-                        <span asp-validation-for="KrajnjaDestinacijaId" class="text-danger"></span>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label asp-for="DatumPolaska" class="control-label">Datum polaska</label>
-                        <input asp-for="DatumPolaska" class="form-control" />
-                        <span asp-validation-for="DatumPolaska" class="text-danger"></span>
-                    </div>
-                    <div class="form-group col-md-2" id="btn">
-                        <label asp-for="DatumPovratka" class="control-label">Datum povratka</label>
-                        <input asp-for="DatumPovratka" class="form-control" />
-                        <span asp-validation-for="DatumPovratka" class="text-danger"></span>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label asp-for="BrojPutnika" class="control-label">Broj putnika</label>
-                        <input asp-for="BrojPutnika" class="form-control" />
-                        <span asp-validation-for="BrojPutnika" class="text-danger"></span>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <input type="submit" value="Pretraži" class="btn btn-primary" />
-                    </div>
-
-                </div>
-            </form>
-        </div>
-    </div>-->
+   
 </div>
 
 <div class="row">
-    <div class=" col-sm-12 text-center">
-        <div class="row">
-            <div class="col-sm-4">
-                <h3>Rezervacije</h3>
-                <a href="../rezervacija/create">
-                    <img src="http://www.travipro.com/assets/images/flight/carimg1.jpg" style="width:50%; " />
-                    <p style="opacity:0.8; background:lightgray; color:black;">Rezervišite svoju kartu preko telefona,table ili laptopa i uštedite vrijeme čekanja na aerodromu.</p>
-                </a>
-            </div>
-            <div class="col-sm-4">
 
-                <h3>Specijalne ponude </h3>
-                <a href="../povlastice">
-                    <img src="https://www.moneycrashers.com/wp-content/uploads/2011/12/ways-save-hotels-vacation-1068x713.jpg" style="width:200px;height:50%; " />
-                    <p style="opacity:0.8; background:lightgray; color:black;">Aktuelni popusti i pogodnosti koje vam nudimo.</p>
-                </a>
-            </div>
-            <div class="col-sm-4">
-                <h3>Informacije o letu</h3>
-                <a href="../let">
-                    <img src="https://www.arup.com/-/media/arup/images/projects/k/kotoka-international-airport-new-terminal/2000x1125kotokaairport.jpg" style="width:250px; " />
-                    <p style="opacity:0.8; background:lightgray; color:black;">Detaljne informacije o vašem letu.</p>
-                </a>
-            </div>
-        </div>
 
+    <div class="col-sm-4" style="background:url('http://www.travipro.com/assets/images/flight/carimg1.jpg')">
+        <h3>Rezervacije</h3>
+        <a href="../rezervacija/create">
+
+            <p style="opacity:0.8; background:lightgray; color:black;">Rezervišite svoju kartu preko telefona,table ili laptopa i uštedite vrijeme čekanja na aerodromu.</p>
+        </a>
     </div>
+
+
+    <div class="col-sm-4"style="background:url('https://www.moneycrashers.com/wp-content/uploads/2011/12/ways-save-hotels-vacation-1068x713.jpg')">
+
+        <h3>Specijalne ponude </h3>
+        <a href="../povlastice">
+           
+            <p style="opacity:0.8; background:lightgray; color:black;">Aktuelni popusti i pogodnosti koje vam nudimo.</p>
+        </a>
+    </div>
+    <div class="col-sm-4"style="background:url('https://www.arup.com/-/media/arup/images/projects/k/kotoka-international-airport-new-terminal/2000x1125kotokaairport.jpg')">
+        <h3>Informacije o letu</h3>
+        <a href="../let">
+           
+            <p style="opacity:0.8; background:lightgray; color:black;">Detaljne informacije o vašem letu.</p>
+        </a>
+    </div>
+
+
+
 </div>
-</div>
+
 
 
 
