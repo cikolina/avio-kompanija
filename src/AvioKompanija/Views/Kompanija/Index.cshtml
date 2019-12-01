@@ -5,7 +5,7 @@
 }
 <style>
     h1 {
-        background: rgb(232, 138, 22);
+        background: blue;
         color: #333;
         font-size: 2em;
         display: inline-block;
@@ -24,6 +24,15 @@
         font-weight: 300;
         margin: 0;
     }
+    h8{
+        color:black;
+        font-weight:400; 
+        
+
+    }
+    p{
+        color:darkblue;
+    }
     .row {
         margin: 0;
     }
@@ -33,30 +42,30 @@
 
 <div class="container">
     <div class="row" style="padding-bottom:50px;">
-        <h1>Lista avio-kompanija koje nam nude svoje usluge.</h1>
-        <h5>Lista avio-kompanija koje nam nude svoje usluge.</h5>
+        <h1>Lista avio-kompanija</h1>
+        <h5>Pregled avio-kompanija sa kojim sarađujemo.Kratak pregled informacija o svakoj od njih</h5>
     </div>
 
     @foreach (var item in Model)
     {
         <div class="row container">
-            <div class="col-sm-12" style="padding:20px 0;background: orange;">
+            <div class="col-sm-12" style="padding:20px 0;background: rgb(33, 61, 228);">
                 <div class="row">
                     <div class="col-md-3" style="background: red; padding: 0;">
                         <img class="img-thumbnail img-hover" style="width:100%;" src="@Html.DisplayFor(modelItem => item.Logo)" 
                              ="@Html.DisplayFor(modelItem => item.Naziv)" />
     
                     </div>
-                    <div class="col-md-9" style="background: blue;">
-                        <h4>Naziv avio-kompanije: @item.Naziv</h4>
+                    <div class="col-md-9" style="background: rgb(160, 138, 138);">
+                        <h4 >Naziv avio-kompanije:</h4><h4 style="color:darkblue;"> @item.Naziv</h4>
                         <p>
-                            Oznaka avio-kompanije: @item.Oznaka <br />
-                            Sjedište avio-kompanije: @item.Sjediste<br />
-                            Ocjena avio-kompanije: @item.Ocjena
+                           <h8>Oznaka avio-kompanije:</h8> @item.Oznaka <br />
+                           <h8>Sjedište avio-kompanije:</h8> @item.Sjediste<br />
+                           <h8>Ocjena avio-kompanije:</h8> @item.Ocjena
                         </p>
                     </div>
                 </div>
-                <div class="row" style="border-bottom:solid 1px silver; background: green;">
+                <div class="row" style="border-bottom:solid 1px silver; background: white;">
                     <div class="col-6">
 
                     </div>

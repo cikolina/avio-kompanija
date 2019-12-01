@@ -6,16 +6,17 @@
 
 
     <div class="col-12">
-        <h1 style="position:relative;top:20%;left:20%">
+        <h1 style="position:relative;top:20%;left:20% ;color:darkred;">
             Neki od naših specijalnih paketa.
         </h1>
-        <img src="https://media.gettyimages.com/photos/flight-attendant-serving-businessman-on-corporate-jet-picture-id500817415" style="width:100%;" />
+        <img src="https://media.gettyimages.com/photos/flight-attendant-serving-businessman-on-corporate-jet-picture-id500817415" style="width:100%;height:500px;" />
+        <div class=" text" style="position:absolute;bottom:140px;right:11px; height:100px;width:500px;background:darkred;">
+            <h5>Popusti i pogodnosti koje vam nudimo.</h5>
+            <p>Naša široka ponuda popusta i povlastica.Izaberite neku od usluga i učinite sebi 
+            svoj let još ugodnijim i ljepšim. Mi vam nudimo razne sadržaje i olakšice.</p>
     </div>
 
-
-<p>
-    <a asp-action="Create">Dodaj novu povlasticu</a>
-</p>
+        </div>
 
 @foreach(var item in Model)
 {
@@ -35,3 +36,6 @@
     </div>
 
 }
+<p>
+    <a asp-action="Create">Dodaj novu povlasticu</a>
+</p>
