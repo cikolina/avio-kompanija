@@ -1,0 +1,89 @@
+﻿
+@model IEnumerable<AvioKompanija.Models.Destinacija>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1  style="color:mediumblue;">Destinacije </h1>
+
+
+@foreach (var item in Model)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-5">
+                <h2 class="text-primary ">@item.Grad</h2>
+            </div>
+            <div class="col-7"></div>
+        </div>
+        <div class="row">
+            <div class="col-5">
+                <p><h6>O destinaciji: </h6> @item.Opis</p>
+                <p>
+                    Avio karte  za @item.Grad možete
+                    vrlo jednostavnom procedurom kupiti preko našeg sajta u svega
+                    nekoliko koraka. 
+                </p>
+
+            </div>
+            <div class="col-7">
+                <img class="popImg img-thumbnail img-hover" width="430px;"height="300px;"
+                     src="@Html.DisplayFor(modelItem => item.Img)"
+                     alt="@Html.DisplayFor(modelItem => item.Grad)" />
+                <p>@item.Drzava : @item.Grad</p>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class=" col-5">   
+
+            </div>
+
+            <div class="col-7" style="text-align:right;"> 
+              
+                <a asp-action="Edit" asp-route-id="@item.Id">Uredi</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Izbrisi</a>
+            </div>
+
+        </div>
+    </div>
+}
+<p>
+    <a asp-action="Create">Dodaj novu destinaciju</a>
+</p>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="" class="imagepreview" style="width: 100%;">
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+$(function () {
+        $('.popImg').on('click', function () {
+            $('.imagepreview').attr('src', $(this).attr('src'));
+            $('#exampleModalCenterTitle').text($(this).attr('alt'));
+            $('#imagemodal').modal('show');
+        });
+    });</script>
+    <style>
+
+        .img-hover {
+            cursor: pointer;
+        }
+    </style>
+}
+

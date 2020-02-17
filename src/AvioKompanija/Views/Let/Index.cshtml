@@ -1,0 +1,78 @@
+﻿@model IEnumerable<AvioKompanija.Models.Let>
+
+@{
+    ViewData["Title"] = "Index";
+}
+    <body style="background-image:url('https://cdn.pixabay.com/photo/2017/06/05/11/01/airport-2373727__340.jpg');background-size: 100% 100%;">
+        <div style="background-color:lightslategray;opacity:0.8;width:200px;text-align:center;">
+        <h1 style="color:darkred;">Letovi</h1> </div>
+        
+
+
+        <table class="table-hover table-bordered" border="3">
+            <thead>
+                <tr>
+                    <th>
+                        Datum polaska
+                    </th>
+                    <th>
+                        Broj sjedišta
+                    </th>
+                    <th>
+                        Broj leta
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Kompanija)
+                    </th>
+                    <th>
+
+                        Krajnja destinacija
+                    </th>
+                    <th>
+
+                        Početna destinacija
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Terminal)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DatumPolaska)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BrojMjesta)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BrojLeta)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Kompanija.Naziv)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.KrajnjaDestinacija.Grad)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PocetnaDestinacija.Grad)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Terminal.Naziv)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Uredi</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Detalji</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Obriši</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <p>
+            <a asp-action="Create">Dodaj novi let</a>
+        </p>
+    </body>

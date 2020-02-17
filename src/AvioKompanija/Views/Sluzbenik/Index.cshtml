@@ -1,0 +1,55 @@
+﻿@model IEnumerable<AvioKompanija.Models.Sluzbenik>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>O nama</h1>
+
+
+
+<table class="table-hover table-bordered" border="3">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prezime)
+            </th>
+            <th>
+            Radno mjesto
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kompanija)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prezime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RadnoMjesto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kompanija.Naziv)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Uredi</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalji</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Obriši</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>
+    <a asp-action="Create">Dodaj novog zaposlenog</a>
+</p>

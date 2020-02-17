@@ -1,0 +1,64 @@
+﻿@model IEnumerable<AvioKompanija.Models.Putnik>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Pregled svih putnika </h1>
+
+<p>
+    <a asp-action="Create">Dodaj novog putnika</a>
+</p>
+<table class="table" style="text-align:left;border:1px solid black;border-collapse:collapse;">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prezime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BrojPasosa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatumRodjenja)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prezime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrojPasosa)
+            </td>
+            @if(item.Pol == 0)
+            {
+                <td>M</td>
+            }
+            else
+            {
+                <td>F</td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.DatumRodjenja)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Uredi</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Obriši</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
